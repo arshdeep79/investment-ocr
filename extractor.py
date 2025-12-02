@@ -2,6 +2,7 @@ import cv2
 import easyocr
 from sources.etoro import Etoro
 from sources.fundsindia import FundsIndia
+from sources.wio import Wio
 from typing import Dict, Any
 
 # Initialize the OCR reader
@@ -38,7 +39,7 @@ def extract_info(image_path: str) -> Dict[str, Any]:
     full_text = full_text.replace('s', '$')  # 's' might be '$'
 
     # Try each source
-    sources = [Etoro(full_text), FundsIndia(full_text)]
+    sources = [Etoro(full_text), FundsIndia(full_text), Wio(full_text)]
     for source_class in sources:
         if source_class.detect():
             return {

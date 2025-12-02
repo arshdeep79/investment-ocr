@@ -34,15 +34,7 @@ class FundsIndia:
                 values = [float(n.replace(",", "")) for n in all_numbers]
                 return max(values)
         
-        # Fallback to largest number
-        numbers = re.findall(NUMBER_REGEX, self.text)
-        if not numbers:
-            raise ValueError("Could not extract value for FundsIndia")
-        
-        clean_numbers = [float(n.replace(",", "")) for n in numbers]
-        balance = max(clean_numbers)
-        
-        return balance
+        raise ValueError("Could not extract value for FundsIndia")
 
     @property
     def currency(self) -> str:
